@@ -1,13 +1,15 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
-import { getBook } from 'redux/actions/bookActions';
+import React from 'react'
+import { useSelector } from 'react-redux'
+// import React, { useEffect } from 'react'
+// import { useDispatch, useSelector } from 'react-redux'
+// import { getBook } from 'redux/actions/bookActions';
+// import { useParams } from 'react-router-dom'
 
 function Details() {
     const book = useSelector(state => state.book.book)
     const { title, description, subtitle, author } = book
     // const dispatch = useDispatch()
-    const { id } = useParams();
+    // const { id } = useParams();
 
     // useEffect(() => {
     //     dispatch(getBook(id))
@@ -24,9 +26,7 @@ function Details() {
                 </div>
             </div>
             <div className="py-8">
-                {
-                    description
-                }
+                <p>{description}</p>
             </div>
         </div>
     )
