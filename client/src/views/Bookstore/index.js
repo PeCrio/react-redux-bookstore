@@ -1,17 +1,15 @@
 import React from 'react'
-import Form from './components/Form'
-import Header from './components/Header'
-import Table from './components/Table'
-import Footer from 'components/Footer'
+import { Redirect, Route, Switch } from 'react-router-dom'
+import Book from './Book'
+import Books from './Books'
 
 function Bookstore() {
     return (
-        <div className="bg-blue-200 min-h-screen">
-            <Header />
-            <Form />
-            <Table />
-            <Footer />
-        </div>
+        <Switch>
+            <Route path="/bookstore/books" component={Books} />
+            <Route path="/bookstore/book/:id" component={Book} />
+            <Redirect from='/bookstore' to="/bookstore/books" />
+        </Switch>
     )
 }
 
