@@ -5,9 +5,11 @@ import Details from './components/Details'
 
 function Book(props) {
     return (
-        <div className="bg-gray-100 min-h-screen flex flex-col justify-between">
+        <div className="flex flex-col justify-between min-h-screen bg-gray-100">
             <Header />
-            <Details />
+            <div className="px-4 transform -translate-y-16">
+                <Details />
+            </div>
             <Footer />
         </div>
     )

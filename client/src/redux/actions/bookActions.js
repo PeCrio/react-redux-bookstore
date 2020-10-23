@@ -19,7 +19,7 @@ export const getBooks = () => (dispatch) => {
 export const getBook = (id) => (dispatch) => {
     dispatch(setBooksLoading());
     axios
-        .get(`/api/book/${id}`)
+        .get(`/api/books/${id}`)
         .then(res =>
             dispatch({
                 type: GET_BOOK,
@@ -46,8 +46,9 @@ export const addBook = (book) => (dispatch) => {
 };
 
 export const updateBook = (id, book) => (dispatch) => {
+    dispatch(setBooksLoading());
     axios
-        .put(`/api/book/${id}`, book)
+        .put(`/api/books/${id}`, book)
         .then(res =>
             dispatch({
                 type: UPDATE_BOOK,
@@ -61,7 +62,7 @@ export const updateBook = (id, book) => (dispatch) => {
 
 export const deleteBook = (id) => (dispatch) => {
     axios
-        .delete(`/api/book/${id}`)
+        .delete(`/api/books/${id}`)
         .then(res =>
             dispatch({
                 type: DELETE_BOOK,
