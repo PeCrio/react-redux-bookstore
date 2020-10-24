@@ -57,7 +57,7 @@ router.put('/:id', (req, res) => {
             const { title: new_title, subtitle: new_subtitle, author: new_author, publisher: new_publisher, description: new_description } = req.body
             Book.findOne({ title: new_title })
                 .then(titleExists => {
-                    if (titleExists) return res.status(400).json({ msg: "A book already exist with this title" })
+                    if (title !== new_title) if (titleExists) return res.status(400).json({ msg: "A book already exist with this title" })
                     updatedBook = {
                         $set: {
                             title: !new_title ? title : new_title,
