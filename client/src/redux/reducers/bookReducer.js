@@ -31,11 +31,13 @@ const bookReducer = (state = initialState, { type, payload }) => {
                 ...state,
                 books: state.books.filter(book => book._id !== payload)
             };
+
         case UPDATE_BOOK:
+            const filteredBooks = state.books.filter(book => book._id !== payload._id)
+            const updatedBooks = [...filteredBooks, payload];
             return {
                 ...state,
-                loading: false,
-                books: payload
+                books: updatedBooks
             }
         case ADD_BOOK:
             return {

@@ -577,6 +577,25 @@ video {
   height: auto;
 }
 
+.customFadeInUp {
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+  animation-name: fadeInUp;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .container {
   width: 100%;
 }
@@ -603,6 +622,39 @@ video {
   .container {
     max-width: 1280px;
   }
+}
+
+.form_label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+  --text-opacity: 1;
+  color: #4a5568;
+  color: rgba(74, 85, 104, var(--text-opacity));
+  text-transform: uppercase;
+}
+
+.form_input {
+  width: 100%;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  line-height: 1.25;
+  --text-opacity: 1;
+  color: #4a5568;
+  color: rgba(74, 85, 104, var(--text-opacity));
+  border-bottom-width: 2px;
+  -webkit-appearance: none;
+          appearance: none;
+}
+
+.form_input:focus {
+  --border-opacity: 1;
+  border-color: #63b3ed;
+  border-color: rgba(99, 179, 237, var(--border-opacity));
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 
 .space-y-0 > :not(template) ~ :not(template) {

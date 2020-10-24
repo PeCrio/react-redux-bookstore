@@ -1,5 +1,33 @@
 @tailwind base;
 
+.customFadeInUp {
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    animation-name: fadeInUp;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes fadeInUp {
+    0% {
+       opacity: 0;
+       transform: translateY(20px);
+    }
+    100% {
+       opacity: 1;
+       transform: translateY(0);
+    }
+ } 
 @tailwind components;
 
+.form_label {
+    @apply block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase;
+}
+.form_input {
+    @apply w-full py-2 leading-tight text-gray-700 border-b-2 appearance-none;
+}
+.form_input:focus {
+    @apply border-blue-400 outline-none;
+}
 @tailwind utilities;

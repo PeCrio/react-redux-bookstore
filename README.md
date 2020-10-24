@@ -9,9 +9,20 @@ A simple web application that manages books in a bookstore.
 ## Tools
 - React
 - react-redux
+- react-router
+- config
+- mongoose
+- expressJS
+- NodeJS
+- axios
+- formik
+- axios
+- sweetalert2
 - TailwindCSS
 ## Core Principles
 - CRUD
 - React Hooks
 - ES6
 - Redux
+- MongoDB
+- REST API

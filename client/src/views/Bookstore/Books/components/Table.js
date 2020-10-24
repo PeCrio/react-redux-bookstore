@@ -3,17 +3,18 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { deleteBook } from 'redux/actions/bookActions'
 import { getBooks } from 'redux/actions/bookActions'
+import Modal from './Modal'
 
 function Table() {
 
     const [showModal, setShowModal] = useState(false)
+    const [bookToUpdate, setBookToUpdate] = useState({})
     const toggleModal = () => setShowModal(prevState => !prevState)
 
     const dispatch = useDispatch()
 
     const loading = useSelector(state => state.book.loading)
     const error = useSelector(state => state.book.error)
-
     const books = useSelector(state => state.book.books)
     useEffect(() => {
         dispatch(getBooks())
@@ -25,6 +26,7 @@ function Table() {
                 <div className="flex flex-wrap items-center">
                     <div className="relative flex-1 flex-grow w-full max-w-full px-2 text-center">
                         <h3 className="text-sm font-bold text-black uppercase">All Books</h3>
+                        <button onClick={toggleModal} className="px-3 py-1 my-4 text-xs font-semibold text-blue-700 border border-blue-700 rounded hover:bg-indigo-100">Add a book</button>
                     </div>
                 </div>
             </div>
@@ -110,7 +112,7 @@ function Table() {
                                                                 <Link to={`book/${_id}`}>
                                                                     <button className="px-3 py-1 text-xs text-white bg-blue-800 rounded hover:bg-indigo-200 hover:text-blue-800">Read</button>
                                                                 </Link>
-                                                                <button onClick={toggleModal} className="px-3 py-1 text-xs font-semibold text-blue-700 border border-blue-700 rounded hover:bg-indigo-100">Edit</button>
+                                                                <button onClick={() => { toggleModal(); setBookToUpdate(book) }} className="px-3 py-1 text-xs font-semibold text-blue-700 border border-blue-700 rounded hover:bg-indigo-100">Edit</button>
                                                                 <button onClick={() => dispatch(deleteBook(_id))} className="px-3 py-1 text-xs font-semibold text-red-400 rounded focus:bg-pink-300 hover:bg-pink-100">Delete</button>
                                                             </div>
                                                         </div>
@@ -128,7 +130,8 @@ function Table() {
                     </tbody>
                 </table>
             </div>
-        </div >
+            <Modal showModal={showModal} toggleModal={toggleModal} bookToUpdate={bookToUpdate} setBookToUpdate={setBookToUpdate} />
+        </div>
     )
 }
 

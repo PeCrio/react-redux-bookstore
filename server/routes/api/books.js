@@ -9,6 +9,7 @@ router.get('/', (req, res) => {
         .then(book => {
             res.json(book)
         })
+        .catch(err => res.json({ msg: 'Oops an error occured in handling your request, kindly check your internet connection or try again later', success: false }))
 })
 
 // @route   '/api/books'
@@ -20,7 +21,7 @@ router.get('/:id', (req, res) => {
         .then(book => {
             res.json(book)
         })
-        .catch(err => res.status(400).json(`No book exist with the id of ${id}`))
+        .catch(err => res.status(400).json({ msg: `No book exist with the id of ${id}` }))
 })
 
 // @route   '/api/books'
@@ -41,7 +42,8 @@ router.post('/', (req, res) => {
                 })
                 .catch(err => res.status(400).json({ msg: 'An error occured creating this book' }))
         })
-        .catch(err => res.json({ error: err.message, success: false }))
+        .catch(err => res.json({ msg: 'Oops an error occured in handling your request, kindly check your internet connection or try again later', success: false }))
+    // .catch(err => res.json({ error: err.message, success: false }))
 })
 
 // @route   '/api/books/:id'
