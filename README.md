@@ -1,5 +1,7 @@
 # MERN CRUD Redux Tailwind Bookstore App
 > A simple bookstore management app built with the MERN stack with Redux for state management, TailwindCSS for design system, see below docs for features and more tools used.
+## Quick Start
+Create a "/config" folder in the root directory, then add your MONGO_URI to a "default.json" file in that folder.
 ```bash
 # Install dependencies for server
 npm run server-install
@@ -48,3 +50,7 @@ npm run client
 - Redux
 - MongoDB
 - REST API
+## App Info
+### Author
+Precious OSSAI
+[PeCrio](https://www.pecrio.org)
