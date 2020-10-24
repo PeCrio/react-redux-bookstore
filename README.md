@@ -1,4 +1,4 @@
-# React redux bookstore
+# MERN CRUD Redux Tailwind Bookstore App
 > A simple bookstore management app built with the MERN stack with Redux for state management, TailwindCSS for design system, see below docs for features and more tools used.
 ```bash
 # Install dependencies for server
