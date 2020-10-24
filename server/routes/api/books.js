@@ -50,24 +50,30 @@ router.post('/', (req, res) => {
 // @desc    Update a book record
 // @access  Private
 router.put('/:id', (req, res) => {
+
     Book.findById(req.params.id)
         .then(book => {
             const { title, subtitle, author, publisher, description } = book
             const { title: new_title, subtitle: new_subtitle, author: new_author, publisher: new_publisher, description: new_description } = req.body
-
-            updatedBook = {
-                $set: {
-                    title: !new_title ? title : new_title,
-                    subtitle: !new_subtitle ? subtitle : new_subtitle,
-                    author: !new_author ? author : new_author,
-                    publisher: !new_publisher ? publisher : new_publisher,
-                    description: !new_description ? description : new_description
-                }
-            }
-            Book.updateOne(book, updatedBook)
-                .then(() => res.json({ msg: 'Book updated successfully' }))
+            Book.findOne({ title: new_title })
+                .then(titleExists => {
+                    if (titleExists) return res.status(400).json({ msg: "A book already exist with this title" })
+                    updatedBook = {
+                        $set: {
+                            title: !new_title ? title : new_title,
+                            subtitle: !new_subtitle ? subtitle : new_subtitle,
+                            author: !new_author ? author : new_author,
+                            publisher: !new_publisher ? publisher : new_publisher,
+                            description: !new_description ? description : new_description
+                        }
+                    }
+                    Book.updateOne(book, updatedBook)
+                        .then(() => res.json({ msg: 'Book updated successfully' }))
+                })
         })
         .catch(err => res.status(404).json({ msg: `No book found with the id of ${req.params.id}` }))
+
+
 })
 
 // @route   DELETE api/books/:id

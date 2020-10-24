@@ -12,7 +12,7 @@ function Modal({ showModal, toggleModal, bookToUpdate, setBookToUpdate }) {
                                 <p className="font-semibold">Manage Books</p>
                                 <button onClick={() => { toggleModal(); setBookToUpdate({}); }} className="px-2 py-1 text-xs font-semibold text-red-500 border-2 border-red-500 rounded">Close</button>
                             </div>
-                            <Form toggleModal={toggleModal} bookToUpdate={bookToUpdate} setBookToUpdate={setBookToUpdate} />
+                            <Form bookToUpdate={bookToUpdate} />
                         </div>
                     </div>
                 </div>

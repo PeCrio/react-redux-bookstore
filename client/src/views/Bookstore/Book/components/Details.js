@@ -7,7 +7,6 @@ function Details() {
     const book = useSelector(state => state.book.book)
     const loading = useSelector(state => state.book.loading)
 
-
     const dispatch = useDispatch()
     const { id } = useParams();
 

@@ -5,7 +5,7 @@ import { updateBook } from "redux/actions/bookActions";
 import { addBook } from "redux/actions/bookActions";
 import { useDispatch } from "react-redux";
 
-export default function BookForm({ bookToUpdate, setBookToUpdate, toggleModal }) {
+export default function BookForm({ bookToUpdate }) {
     const dispatch = useDispatch()
     const initialValues = JSON.stringify(bookToUpdate) === '{}' ?
         {
@@ -29,8 +29,7 @@ export default function BookForm({ bookToUpdate, setBookToUpdate, toggleModal })
         } else {
             dispatch(updateBook(bookToUpdate._id, { _id: bookToUpdate._id, ...values }))
         }
-        setBookToUpdate({})
-        toggleModal()
+        setSubmitting(false)
     }
     const validationSchema = Yup.object({
         title: Yup.string().required('Required').min(3, 'Cannot be less than 3 letters'),

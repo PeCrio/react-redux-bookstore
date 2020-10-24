@@ -1,10 +1,9 @@
-import { GET_BOOKS, GET_BOOK, REQUEST_FAILED, BOOKS_LOADING, DELETE_BOOK, ADD_BOOK, UPDATE_BOOK } from "redux/actions/types"
+import { GET_BOOKS, GET_BOOK, BOOKS_LOADING, DELETE_BOOK, ADD_BOOK, UPDATE_BOOK } from "redux/actions/types"
 
 const initialState = {
     books: [],
     book: {},
-    loading: false,
-    error: ""
+    loading: false
 }
 
 const bookReducer = (state = initialState, { type, payload }) => {
@@ -44,12 +43,6 @@ const bookReducer = (state = initialState, { type, payload }) => {
                 ...state,
                 books: [payload, ...state.books]
             };
-        case REQUEST_FAILED:
-            return {
-                ...state,
-                loading: false,
-                error: payload
-            }
         default: return state
     }
 }

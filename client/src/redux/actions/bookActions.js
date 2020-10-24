@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { GET_BOOKS, ADD_BOOK, DELETE_BOOK, BOOKS_LOADING, UPDATE_BOOK, GET_BOOK } from './types';
-import { returnErrors } from './errorActions';
 import Swal from 'sweetalert2';
 
 export const getBooks = () => (dispatch) => {
@@ -15,13 +14,11 @@ export const getBooks = () => (dispatch) => {
         )
         .catch(err => {
             if (err.response) {
-                dispatch(returnErrors(err.response.data.msg, err.response.status))
                 Swal.fire("Oops", err.response.data.msg, "error")
             } else if (err.request) {
-                Swal.fire("Oops", "Please check your internet connection and try again", "error")
+                Swal.fire("Oops", "Please check your internet connection and reload the page", "error")
             } else {
                 Swal.fire("Oops", "An error occured, please try again later", "error")
-                dispatch(returnErrors('An error occured, please check your internet connection or try again later', err.response.status))
             }
         });
 };
@@ -37,13 +34,11 @@ export const getBook = (id) => (dispatch) => {
         )
         .catch(err => {
             if (err.response) {
-                dispatch(returnErrors(err.response.data.msg, err.response.status))
                 Swal.fire("Oops", err.response.data.msg, "error")
             } else if (err.request) {
-                Swal.fire("Oops", "Please check your internet connection and try again", "error")
+                Swal.fire("Oops", "Please check your internet connection and reload the page", "error")
             } else {
                 Swal.fire("Oops", "An error occured, please try again later", "error")
-                dispatch(returnErrors('An error occured, please check your internet connection or try again later', err.response.status))
             }
         });
 };
@@ -60,13 +55,11 @@ export const addBook = (book) => (dispatch) => {
         })
         .catch(err => {
             if (err.response) {
-                dispatch(returnErrors(err.response.data.msg, err.response.status))
-                Swal.fire("Oops", err.response.data.msg, "warning")
+                Swal.fire("Oops", err.response.data.msg, "error")
             } else if (err.request) {
-                Swal.fire("Oops", "Please check your internet connection and try again", "warning")
+                Swal.fire("Oops", "Please check your internet connection and reload the page", "error")
             } else {
-                Swal.fire("Oops", "An error occured, please try again later", "warning")
-                dispatch(returnErrors('An error occured, please check your internet connection or try again later', err.response.status))
+                Swal.fire("Oops", "An error occured, please try again later", "error")
             }
         });
 };
@@ -83,13 +76,11 @@ export const updateBook = (id, book) => (dispatch) => {
         })
         .catch(err => {
             if (err.response) {
-                dispatch(returnErrors(err.response.data.msg, err.response.status))
-                Swal.fire("Oops", err.response.data.msg, "warning")
+                Swal.fire("Oops", err.response.data.msg, "error")
             } else if (err.request) {
-                Swal.fire("Oops", "Please check your internet connection and try again", "warning")
+                Swal.fire("Oops", "Please check your internet connection and reload the page", "error")
             } else {
-                Swal.fire("Oops", "An error occured, please try again later", "warning")
-                dispatch(returnErrors('An error occured, please check your internet connection or try again later', err.response.status))
+                Swal.fire("Oops", "An error occured, please try again later", "error")
             }
         });
 };
@@ -114,13 +105,11 @@ export const deleteBook = (id) => (dispatch) => {
             })
             .catch(err => {
                 if (err.response) {
-                    dispatch(returnErrors(err.response.data.msg, err.response.status))
-                    Swal.fire("Oops", err.response.data.msg, "warning")
+                    Swal.fire("Oops", err.response.data.msg, "error")
                 } else if (err.request) {
-                    Swal.fire("Oops", "Please check your internet connection and try again", "warning")
+                    Swal.fire("Oops", "Please check your internet connection and reload the page", "error")
                 } else {
-                    Swal.fire("Oops", "An error occured, please try again later", "warning")
-                    dispatch(returnErrors('An error occured, please check your internet connection or try again later', err.response.status))
+                    Swal.fire("Oops", "An error occured, please try again later", "error")
                 }
             });
     })

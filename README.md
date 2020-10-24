@@ -16,7 +16,6 @@ A simple web application that manages books in a bookstore.
 - NodeJS
 - axios
 - formik
-- axios
 - sweetalert2
 - TailwindCSS
 ## Core Principles
